@@ -9,10 +9,13 @@
             $url = $this->parseUrl();
 
             //controller
-            if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+            if (isset($url[0])) {
+               if (file_exists('../app/controllers/' . $url[0] . '.php')) {
                 $this->controller = $url[0];
                 unset($url[0]);
+            } 
             }
+            
 
             require_once '../app/controllers/' . $this->controller . '.php';
 
